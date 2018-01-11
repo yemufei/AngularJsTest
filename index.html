@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html ng-app="voteApp" ng-init="actions=[
+{code:'agree',name:'同意',nameEn:'agree'},
+{code:'disagree',name:'拒绝',nameEn:'disagree'}]">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>AngularJS Demo Project</title>
+		<link rel="stylesheet" type="text/css" href="static/css/pure-0.6.min.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/app.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/temp0.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/temp1.css" />
+		<script type="text/javascript" src="static/js/angular-1.5.8.js"></script>
+		<script type="text/javascript" src="static/js/angular-route.js"></script>
+		<script type="text/javascript" src="app/app.js"></script>
+		<script type="text/javascript" src="app/service/voteServices.js"></script>
+		<script type="text/javascript" src="app/filter/voteFilters.js"></script>
+		<script type="text/javascript" src="app/directive/voteDirectives.js"></script>
+		<script type="text/javascript" src="app/controller/voteControllers.js"></script>
+	</head>
+	<body>
+	<div class="pro-modal-body" ng-style="modalBodyStyle" ng-controller="myCtrl">
+		<table class="table table-no-bordered" >
+
+
+			<tr>
+				<th valign="top" style="padding-top:15px;position:relative;">设置节点动作<i class="pro-icon pro-icon-help pro-question-mark" tooltip="如果审批表单页面在内外工作流平台上，设置的动作会自动出现在审批页面上，如果是业务应用自己的表单页面，需要自行绑定。" tooltip-placement="top"></i></th>
+				<td style="padding-top:5px;">
+					<div id="actionListBox" style="margin-right: 18px;overflow-x:auto">
+						<dl ng-repeat="action in actions" class="dl-horizontal" style="margin-left:-35px;">
+							<dd>
+								<div class="input-group">
+									<div class="input-group-addon" style="height:16px;">动作</div>
+
+									<input class="input-group-in left" type="text" ng-model="action.code"
+										   style="width:45px;height:22px;">
+									<div class="input-group-addon" style="border-right:none;height:16px;">中文别名</div>
+									<input class="input-group-in" type="text" ng-model="action.name"
+										   style="width:45px;height:22px;">
+									<div class="input-group-addon" style="border-right:none;height:16px;border-left:none;">
+										英文别名
+									</div>
+									<input class="input-group-in" type="text" ng-model="action.nameEn"
+										   style="width:45px;height:22px;">
+									<div class="input-group-addon" ng-click="removeAction($index);"
+										 ng-show="true" style="border-left:none;font-size:13px;">
+										<i class="pro-icon pro-icon-delete"></i></div>
+									<div class="input-group-addon" ng-click="addAction();" ng-show="$last"
+										 style="border-left:none;font-size:13px;"><i class="pro-icon pro-icon-add"></i>
+									</div>
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</td>
+			</tr>
+
+		</table>
+	</div>
+		
+
+	</body>
+
+	<script type="text/javascript">
+
+        var myApp = angular.module("voteApp", []);
+        //Create a Controller
+        myApp.controller("myCtrl", function($scope) {
+            $scope.firstName = "Neo";
+            $scope.lastName = "Huang";
+
+
+            $scope.removeAction=function () {
+
+            }
+
+            $scope.addAction=function () {
+
+                $scope.actions.push({
+                    code:'',
+                    name:'',
+					nameEn:''
+                })
+
+
+
+            }
+
+
+
+
+        });
+
+        //Create a Directive
+       /* myApp.directive("myDirective", function() {
+            return {
+                template: "I was created in directive constructor!"
+            };
+        });*/
+	</script>
+</html>
