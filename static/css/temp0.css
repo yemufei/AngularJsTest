@@ -1347,7 +1347,7 @@ a.kuma-btn-green, a.kuma-btn-green:active, a.kuma-btn-green:hover {
 .pro-modal-body {
     position: relative;
     padding: 10px;
-    overflow-y: auto
+    /*overflow-y: auto*/
 }
 
 .pro-modal-tabs {
