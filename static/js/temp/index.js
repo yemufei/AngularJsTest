@@ -36,7 +36,7 @@ myApp.controller("myCtrl", function ($scope, $compile) {
             $("#myDropdown").show();
         } else {
             //把没有选中的标准动作从原始标准组中选出来
-        $scope.displayActions = [{code: 'userDefined', name: '自定义', nameEn: 'userDefined', standard: false}];
+        $scope.displayActions = [];
             $scope.standardActions.forEach(function (val1, index1) {
                 if(val1.standard){
                     var contained = false;
@@ -50,6 +50,8 @@ myApp.controller("myCtrl", function ($scope, $compile) {
                     }
                 }
             });
+
+            $scope.displayActions.push({code: 'userDefined', name: '自定义', nameEn: 'userDefined', standard: false});
 
             var template = "<ul id='myDropdown' class=\"dropdown-menu1\" style=\"width:100px;height:77px;\" ng-mouseenter='showMyDiv()' ng-mouseleave='hiddenMyDiv()'>" +
                 "<li ng-repeat=\"aa in displayActions\" ng-click=\"selectAction(aa);\">" +
