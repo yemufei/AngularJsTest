@@ -13,8 +13,8 @@ html, body {
 
 .dropdown-menu1 {
     position: absolute;
-    top: 100%;
-    left: 363px;
+    bottom: 100%;
+    left: 464px;
     z-index: 1000;
     display: none;
     min-width: 50px;

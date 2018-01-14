@@ -35,25 +35,25 @@
             </th>
             <td style="padding-top:5px;">
                 <div id="actionListBox" style="margin-right: 18px;">
-                    <dl ng-repeat="action in actions" class="dl-horizontal" style="margin-left:-35px;">
+                    <dl ng-repeat="action in selectedActions" class="dl-horizontal" style="margin-left:-35px;">
                         <dd>
                             <div class="input-group">
                                 <div class="input-group-addon" style="height:16px;">动作</div>
 
-                                <input class="input-group-in left" type="text" ng-model="action.code"
+                                <input class="input-group-in left" type="text" ng-model="action.code" ng-disabled="action.standard"
                                        style="width:45px;height:22px;">
                                 <div class="input-group-addon" style="border-right:none;height:16px;">中文别名</div>
-                                <input class="input-group-in" type="text" ng-model="action.name"
+                                <input class="input-group-in" type="text" ng-model="action.name" ng-disabled="action.standard"
                                        style="width:45px;height:22px;">
                                 <div class="input-group-addon" style="border-right:none;height:16px;border-left:none;">
                                     英文别名
                                 </div>
-                                <input class="input-group-in" type="text" ng-model="action.nameEn"
+                                <input class="input-group-in" type="text" ng-model="action.nameEn" ng-disabled="action.standard"
                                        style="width:45px;height:22px;">
                                 <div class="input-group-addon" ng-click="removeAction($index);"
                                      ng-show="true" style="border-left:none;font-size:13px;">
                                     <i class="pro-icon pro-icon-delete"></i></div>
-                                <div class="input-group-addon" ng-click="showMyDiv($index);" ng-mouseenter="showMyDiv($index);" ng-mouseleave="hiddenMyDiv();" ng-show="$last"
+                                <div class="input-group-addon" ng-click="showMyDiv();" ng-mouseenter="showMyDiv();"  ng-show="$last" ng-mouseleave='hiddenMyDiv()'
                                      style="border-left:none;font-size:13px;"><i class="pro-icon pro-icon-add"></i>
                                 </div>
                             </div>
