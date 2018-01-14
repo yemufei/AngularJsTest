@@ -1,26 +1,69 @@
 var myApp = angular.module("voteApp", []);
+
 myApp.controller("myCtrl", function($scope,$compile) {
     $scope.firstName = "Neo";
     $scope.lastName = "Huang";
 
+    $scope.standardActions = [
+        {code: 'agree', name: '同意', nameEn: 'agree'},
+        {code: 'disagree', name: '拒绝', nameEn: 'disagree'}];
 
-    $scope.removeAction=function () {
 
+
+    /*$(".header").mouseover(function (){
+        $(".content").show();
+    }).mouseout(function (){
+        $(".content").hide();
+    });*/
+
+    /*$("#actionListBox").find('div:last').hover(function (){
+
+        $scope.showDiv()
+        // $(".content").show();
+    },function (){
+        $("#myDropdown").remove();
+        // $(".content").hide();
+    });*/
+
+
+
+
+    //合成事件 hover()
+    /*$(".header").hover(function (){
+        $(".content").show();
+    },function (){
+        $(".content").hide();
+    });*/
+
+$scope.actions = [
+    {code: 'agree', name: '同意', nameEn: 'agree'},
+    {code: 'disagree', name: '拒绝', nameEn: 'disagree'},
+    {code: 'aa', name: 'aaa', nameEn: 'aaaa'}];
+
+$scope.removeAction = function(ind){
+    // $('#actionListBox').find('.duplicate').removeClass('duplicate');
+    // $scope.errorMsg = '';
+    $scope.actions.splice(ind, 1);
+}
+
+
+    $scope.hiddenMyDiv=function () {
+        $("#myDropdown").hide();
     }
 
-    $scope.showDiv=function (index) {
+$scope.showMyDiv=function (index) {
 
-//                alert("adfad" + $('#actionListBox').children('div'));
-//                console.log(angular.element('#actionListBox'));
-//                console.log($("#actionListBox").find('div').remove());
-//                $document.find("actionListBox").find('div').remove()
-        var template ="<ul id='myDropdown' class=\"dropdown-menu1\" style=\"width:100px;height:100px;\">"+
-        "<li ng-repeat=\"aa in actions\" ng-click=\"selectAction("+index+");\">" +
-        "{{aa.code}}" +
-        "</li>" +
-        "</ul>";
+    if($("#myDropdown").length>0) {
+        $("#myDropdown").show();
+    }else{
+        var template ="<div id='myDropdown' style=\"width:100px;height:100px;\"><ul  class=\"dropdown-menu1\" style=\"width:100px;height:100px;\" ng-mouseenter='showMyDiv()' ng-mouseleave='hiddenMyDiv()'>"+
+            "<li ng-repeat=\"aa in actions\" ng-click=\"selectAction(aa);\">" +
+            "{{aa.code}}" +
+            "</li>" +
+            "</ul></div>";
+
         /*var actions=$scope.actions;
-        
+
         actions.forEach(function (val,index) {
             // template += "<li ng-click=\"selectAction("+index+");\">";
             template += "<li ng-click=\"addAction();\">";
@@ -35,21 +78,19 @@ myApp.controller("myCtrl", function($scope,$compile) {
         $("#myDropdown").show();
 
 
-
-        console.log("point "+$("#myDropdown").length);
-
+    }
 
     }
 
 
 
-    $scope.selectAction=function () {
+    $scope.selectAction=function (obj) {
         $("#myDropdown").remove();
         console.log("1234151234");
         $scope.actions.push({
-            code:'aa',
-            name:'vv',
-            nameEn:'cc'
+            code:obj.code,
+            name:obj.name,
+            nameEn:obj.nameEn
         });
     }
 
@@ -69,3 +110,13 @@ myApp.controller("myCtrl", function($scope,$compile) {
 
 
 });
+
+/*
+myApp.filter('myfilter', function() {
+    return function(arr) {
+         $scope.standardActions
+
+
+        return
+    }
+});*/
